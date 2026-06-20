@@ -12,6 +12,7 @@
 <p>
 Upload a patch file (.bps, .ips, .ppf, .xdelta), edit the README, and optionally add images to showcase your hack. 
 If README or images are left blank, defaults will be used. Uploaded images will appear inside a <strong>screenshots</strong> folder in the ZIP.
+The website will optimize the file as fast as possible and optimize the file as possible.
 </p>
 
 <br>
@@ -21,7 +22,7 @@ If README or images are left blank, defaults will be used. Uploaded images will 
 <br><br>
 
 <label>Select Patch File:</label><br>
-<input type="file" id="patchFile">
+<input type="file" id="patchFile" onchange="updateZipName()">
 <br><br>
 
 <label>Edit README (Optional):</label><br>
@@ -45,6 +46,19 @@ This tool does NOT include any ROM files.
 </p>
 
 <script>
+// Automatically update the zip name input field when a patch is selected
+function updateZipName() {
+  const fileInput = document.getElementById("patchFile");
+  const zipNameInput = document.getElementById("zipName");
+  
+  if (fileInput.files.length > 0) {
+    const fileName = fileInput.files[0].name;
+    // Removes the last extension (e.g., "super_mario.bps" becomes "super_mario")
+    const nameWithoutExtension = fileName.substring(0, fileName.lastIndexOf('.'));
+    zipNameInput.value = nameWithoutExtension;
+  }
+}
+
 async function makeZip() {
   const allowedExtensions = ["bps", "ips", "ppf", "xdelta"];
   const fileInput = document.getElementById("patchFile");
@@ -69,31 +83,64 @@ async function makeZip() {
     return;
   }
 
-  const zipName = zipNameInput.value.trim() || "hack";
+  // Fallback to the patch name without extension if the text input is cleared
+  const defaultZipName = fileName.substring(0, fileName.lastIndexOf('.'));
+  const zipName = zipNameInput.value.trim() || defaultZipName;
   let readmeContent = readmeEditor.value.trim();
 
   if (readmeContent === "") {
     readmeContent =
-`Thank you for downloading this ROM hack patch.
+`======================================================================
+ROM HACK INSTALLATION GUIDE & README
+======================================================================
 
-This ZIP contains:
-- ${fileName}
-- README.txt
+Thank you for downloading this ROM hack modification package. 
 
-Supported Patch Formats:
-- BPS
-- IPS
-- PPF
-- XDELTA
+[ PACKAGE CONTENTS ]
+----------------------------------------------------------------------
+* Patch File: ${fileName}
+* Documentation: README.txt
+* Screenshots: /screenshots/ (if applicable)
 
-How to Patch:
-Use a patching tool that supports the included format.
+[ HOW TO APPLY THE PATCH ]
+----------------------------------------------------------------------
+To play this modification, you must apply the included patch file to 
+your own legally obtained base ROM file. Do not run the patch file 
+directly in an emulator.
 
-Important:
-This patch does NOT include a ROM.
-You must provide your own legally obtained copy.
+Step 1: Obtain a clean, unmodified base ROM matching the game requirements.
+Step 2: Choose your preferred patching method below:
 
-© 2026 Romhacking Studios`;
+METHOD A: Online Patcher (Recommended / Cross-Platform)
+1. Visit a secure online patcher, such as Marc Robledo's Rom Patcher JS.
+2. Upload your clean base ROM.
+3. Upload the "${fileName}" patch file.
+4. Click "Apply Patch" to download your modified game file.
+
+METHOD B: Desktop Utility Software
+Launch the specific patching utility required for this format:
+* .bps files   -> Use "Flips" (Floating IPS) or Beat
+* .ips files   -> Use "Lunar IPS" (LIPS) or Flips
+* .xdelta files-> Use "XDeltaUI"
+* .ppf files   -> Use "PPF-O-Matic"
+
+[ TROUBLESHOOTING ]
+----------------------------------------------------------------------
+* Black Screen / Crash: Ensure your base ROM is clean and matches the 
+  exact regional version (USA, Japan, Europe) required for the hack.
+* Checksums: If specified by the author, verify your base ROM's MD5/SHA-1 
+  hash using a checksum verification tool before patching.
+* Emulation: Load the newly generated output file (not the patch file) 
+  into your emulator of choice.
+
+[ LEGAL DISCLAIMER ]
+----------------------------------------------------------------------
+This package contains only modification patch data. No proprietary ROM 
+images, copyrighted game assets, or commercial software data are 
+included in this distribution. 
+
+© 2026 Romhacking Studios. All rights reserved.
+======================================================================`;
   }
 
   const zip = new JSZip();
@@ -127,4 +174,5 @@ You must provide your own legally obtained copy.
 </script>
 
 </body>
+</html>
 </html>
