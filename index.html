@@ -10,12 +10,44 @@
 
 <h3>About</h3>
 <p>
-Upload a patch file (.bps, .ips, .ppf, .xdelta), edit the README, and optionally add images to showcase your hack. 
-If README or images are left blank, defaults will be used. Uploaded images will appear inside a <strong>screenshots</strong> folder in the ZIP.
-The website will optimize the file as fast as possible and optimize the file as possible.
+Upload your ROM hack patch file (.bps, .ips, .ppf, .xdelta), customize your README documentation, and optionally include screenshots. 
+If left blank, a comprehensive default README will be generated automatically. Uploaded images will be organized cleanly inside a <strong>screenshots</strong> folder. 
+This tool automatically processes and compresses your files into a distribution package that is **as optimized as possible** to ensure the smallest possible file size for fast downloading.
 </p>
 
+<h3>What are ROM Hacks?</h3>
+<p>
+ROM hacking is the process of modifying a video game's original ROM image (read-only memory) to alter its graphics, music, levels, gameplay mechanics, or text. Because distributing copyrighted game data is illegal, creators save their modifications as lightweight <strong>patch files</strong>. Players then use a patching utility to apply these changes directly to their own legally obtained copies of the original game.
+</p>
+
+<h3>Recommended Emulators (N64)</h3>
+<p>
+For the best compatibility, accuracy, and performance running modern N64 ROM hacks, please refer to this compatibility guide:
+</p>
+<ul>
+  <li><strong>Parallel Launcher:</strong> <span style="color:green; font-weight:bold;">YES!</span> (Highly recommended for modern plugins and accuracy)</li>
+  <li><strong>Rosalie's Mupen GUI (RMG):</strong> <span style="color:green; font-weight:bold;">YES!</span> — <a href="https://github.com/rosalie241/RMG/releases" target="_blank">Download via GitHub</a></li>
+  <li><strong>RetroArch (with Mupen64Plus Next):</strong> <span style="color:green; font-weight:bold;">YES!</span> — <a href="https://www.retroarch.com/" target="_blank">Download via RetroArch Official</a></li>
+  <li><strong>Luna's Project 64:</strong> <span style="color:green; font-weight:bold;">YES!</span> (Excellent for customized hack features)</li>
+  <li><strong>M64Plus FZ:</strong> <span style="color:green; font-weight:bold;">YES!</span> (The best option for mobile/Android emulation)</li>
+  <li><strong>simple64:</strong> <span style="color:green; font-weight:bold;">YES!</span> (High accuracy, great netplay/controller focus)</li>
+  <li><strong>ares:</strong> <span style="color:green; font-weight:bold;">YES!</span> (Superb high-accuracy multi-system emulator)</li>
+  <li><strong>Bizhawk:</strong> <span style="color:green; font-weight:bold;">YES!</span> (Excellent for tool-assisted speedruns and analysis)</li>
+  <li><strong>Project 64:</strong> <span style="color:orange; font-weight:bold;">Kinda Yes</span> (Modern versions work well, but <strong>older versions should be avoided</strong> due to poor plugin support and accuracy errors)</li>
+  <li><strong>Mupen64++:</strong> <span style="color:orange; font-weight:bold;">Kinda Yes?</span> — <a href="https://www.emulator-zone.com/doc.php/n64/mupen64plusplus.html" target="_blank">Download via Emulator-Zone</a></li>
+  <li><strong>UltraHLE:</strong> <span style="color:red; font-weight:bold;">NO (But full respect!)</span> (Released in January 1999, this legendary emulator proved N64 emulation was possible via High-Level Emulation. While historic, it cannot run modern custom ROM hacks.)</li>
+  <li><strong>1964:</strong> <span style="color:red; font-weight:bold;">Highly No</span> (Very old, obsolete plugin architecture, terrible for modern hacks)</li>
+  <li><strong>Corn:</strong> <span style="color:red; font-weight:bold;">NO</span></li>
+  <li><strong>Mupen64:</strong> <span style="color:red; font-weight:bold;">NO</span></li>
+  <li><strong>Nemu64:</strong> <span style="color:red; font-weight:bold;">NO</span> (Completely outdated and highly incompatible with modern hacks)</li>
+  <li><strong>CEN64:</strong> <span style="color:red; font-weight:bold;">NO</span> (Cycle-accurate emulator that runs incredibly slow on average hardware and is largely abandoned)</li>
+  <li><strong>Larper64:</strong> <span style="color:red; font-weight:bold;">NO</span> (Extremely old and discontinued project)</li>
+  <li><strong>Kaizen:</strong> <span style="color:red; font-weight:bold;">NO</span> (Experimental simulator that never reached full compatibility)</li>
+</ul>
+
 <br>
+<img src="https://www.emulator-zone.com/gallery/emulators/n64/n64.jpg" alt="N64 Gallery Image" style="max-width:100%; height:auto;">
+<br><br>
 
 <label>ZIP File Name:</label><br>
 <input type="text" id="zipName" placeholder="hack">
@@ -26,23 +58,28 @@ The website will optimize the file as fast as possible and optimize the file as 
 <br><br>
 
 <label>Edit README (Optional):</label><br>
-<textarea id="readmeEditor" rows="12" cols="60" placeholder="Leave blank to use default README..."></textarea>
+<textarea id="readmeEditor" rows="12" cols="60" placeholder="Leave blank to automatically generate a standard installation guide..."></textarea>
 <br><br>
 
-<label>Import Showcase Images (Optional, max 30):</label><br>
+<label>Include Showcase Images (Optional, max 30):</label><br>
 <input type="file" id="imagesInput" accept="image/*" multiple>
 <br><br>
 
+<h3>Preparing for Romhacking.com (RHDC)?</h3>
+<p>
+If you plan to upload this distribution package to <a href="https://romhacking.com/" target="_blank">Romhacking.com</a>, ensure that your package strictly adheres to their submission guidelines. Double-check that your ZIP contains only the modification patch files, documentation, and screenshots. <strong>Never include original, copyrighted game ROMs</strong> in your upload, as doing so violates community standards and legal terms.
+</p>
+
 <p id="message" style="color:red;"></p>
 
-<button onclick="makeZip()">Download Hack ZIP</button>
+<button id="submitBtn" onclick="makeZip()">Download Hack ZIP</button>
 
 <br><br>
 
 <h3>Copyright</h3>
 <p>
 © 2026 Romhacking Studios. All rights reserved.<br>
-This tool does NOT include any ROM files.
+This utility is a patch packaging tool only; it does NOT distribute or contain commercial ROM files.
 </p>
 
 <script>
@@ -66,7 +103,10 @@ async function makeZip() {
   const readmeEditor = document.getElementById("readmeEditor");
   const imagesInput = document.getElementById("imagesInput");
   const message = document.getElementById("message");
+  const submitBtn = document.getElementById("submitBtn");
 
+  // Reset messages and color
+  message.style.color = "red";
   message.textContent = "";
 
   if (!fileInput.files.length) {
@@ -79,17 +119,31 @@ async function makeZip() {
   const extension = fileName.split('.').pop().toLowerCase();
 
   if (!allowedExtensions.includes(extension)) {
-    message.textContent = "Incorrect file format. Supported: .bps, .ips, .ppf, .xdelta";
+    message.textContent = "Unsupported file format. Please use: .bps, .ips, .ppf, or .xdelta";
     return;
   }
 
-  // Fallback to the patch name without extension if the text input is cleared
-  const defaultZipName = fileName.substring(0, fileName.lastIndexOf('.'));
-  const zipName = zipNameInput.value.trim() || defaultZipName;
-  let readmeContent = readmeEditor.value.trim();
+  const images = imagesInput.files;
+  if (images.length > 30) {
+    message.textContent = "You can upload a maximum of 30 images.";
+    return;
+  }
 
-  if (readmeContent === "") {
-    readmeContent =
+  // Provide status update and temporarily disable button during heavy compression
+  submitBtn.disabled = true;
+  message.style.color = "blue";
+  message.textContent = "Optimizing and compressing ZIP file...";
+
+  // Timeout lets the browser render the "Optimizing..." text before freezing to compress
+  setTimeout(async () => {
+    try {
+      // Fallback to the patch name without extension if the text input is cleared
+      const defaultZipName = fileName.substring(0, fileName.lastIndexOf('.'));
+      const zipName = zipNameInput.value.trim() || defaultZipName;
+      let readmeContent = readmeEditor.value.trim();
+
+      if (readmeContent === "") {
+        readmeContent =
 `======================================================================
 ROM HACK INSTALLATION GUIDE & README
 ======================================================================
@@ -112,6 +166,80 @@ Step 1: Obtain a clean, unmodified base ROM matching the game requirements.
 Step 2: Choose your preferred patching method below:
 
 METHOD A: Online Patcher (Recommended / Cross-Platform)
+1. Visit a secure online patcher, such as Marc Robledo's Rom Patcher JS.
+2. Upload your clean base ROM.
+3. Upload the "${fileName}" patch file.
+4. Click "Apply Patch" to download your modified game file.
+
+METHOD B: Desktop Utility Software
+Launch the specific patching utility required for this format:
+* .bps files   -> Use "Flips" (Floating IPS) or Beat
+* .ips files   -> Use "Lunar IPS" (LIPS) or Flips
+* .xdelta files-> Use "XDeltaUI"
+* .ppf files   -> Use "PPF-O-Matic"
+
+[ TROUBLESHOOTING ]
+----------------------------------------------------------------------
+* Black Screen / Crash: Ensure your base ROM is clean and matches the 
+  exact regional version (USA, Japan, Europe) required for the hack.
+* Checksums: If specified by the author, verify your base ROM's MD5/SHA-1 
+  hash using a checksum verification tool before patching.
+* Emulation: Load the newly generated output file (not the patch file) 
+  into your emulator of choice.
+
+[ LEGAL DISCLAIMER ]
+----------------------------------------------------------------------
+This package contains only modification patch data. No proprietary ROM 
+images, copyrighted game assets, or commercial software data are 
+included in this distribution. 
+
+© 2026 Romhacking Studios. All rights reserved.
+======================================================================`;
+      }
+
+      const zip = new JSZip();
+
+      // Add patch file
+      zip.file(fileName, file);
+
+      // Add README
+      zip.file("README.txt", readmeContent);
+
+      // Add images inside screenshots folder
+      if (images.length > 0) {
+        const imgFolder = zip.folder("screenshots");
+        for (let i = 0; i < images.length; i++) {
+          imgFolder.file(images[i].name, images[i]);
+        }
+      }
+
+      // Optimization: Force standard DEFLATE compression to keep sizes small
+      const blob = await zip.generateAsync({
+        type: "blob",
+        compression: "DEFLATE",
+        compressionOptions: { level: 6 }
+      });
+      
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = zipName + ".zip";
+      link.click();
+
+      message.style.color = "green";
+      message.textContent = "ZIP downloaded successfully!";
+    } catch (error) {
+      message.style.color = "red";
+      message.textContent = "An error occurred during compilation.";
+      console.error(error);
+    } finally {
+      submitBtn.disabled = false;
+    }
+  }, 50);
+}
+</script>
+
+</body>
+</html>
 1. Visit a secure online patcher, such as Marc Robledo's Rom Patcher JS.
 2. Upload your clean base ROM.
 3. Upload the "${fileName}" patch file.
