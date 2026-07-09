@@ -25,28 +25,66 @@ ROM hacking is the process of modifying a video game's original ROM image (read-
 For the best compatibility, accuracy, and performance running modern N64 ROM hacks, please refer to this compatibility guide:
 </p>
 <ul>
-  <li><strong>Parallel Launcher:</strong> <span style="color:green; font-weight:bold;">YES!</span> (Highly recommended for modern plugins and accuracy)</li>
-  <li><strong>Rosalie's Mupen GUI (RMG):</strong> <span style="color:green; font-weight:bold;">YES!</span> — <a href="https://github.com/rosalie241/RMG/releases" target="_blank">Download via GitHub</a></li>
-  <li><strong>RetroArch (with Mupen64Plus Next):</strong> <span style="color:green; font-weight:bold;">YES!</span> — <a href="https://www.retroarch.com/" target="_blank">Download via RetroArch Official</a></li>
-  <li><strong>Luna's Project 64:</strong> <span style="color:green; font-weight:bold;">YES!</span> (Excellent for customized hack features)</li>
-  <li><strong>M64Plus FZ:</strong> <span style="color:green; font-weight:bold;">YES!</span> (The best option for mobile/Android emulation)</li>
-  <li><strong>simple64:</strong> <span style="color:green; font-weight:bold;">YES!</span> (High accuracy, great netplay/controller focus)</li>
-  <li><strong>ares:</strong> <span style="color:green; font-weight:bold;">YES!</span> (Superb high-accuracy multi-system emulator)</li>
-  <li><strong>Bizhawk:</strong> <span style="color:green; font-weight:bold;">YES!</span> (Excellent for tool-assisted speedruns and analysis)</li>
-  <li><strong>Project 64:</strong> <span style="color:orange; font-weight:bold;">Kinda Yes</span> (Modern versions work well, but <strong>older versions should be avoided</strong> due to poor plugin support and accuracy errors)</li>
-  <li><strong>Mupen64++:</strong> <span style="color:orange; font-weight:bold;">Kinda Yes?</span> — <a href="https://www.emulator-zone.com/doc.php/n64/mupen64plusplus.html" target="_blank">Download via Emulator-Zone</a></li>
+  <li><strong>Parallel Launcher:</strong> <span style="color:green; font-weight:bold;">YES!</span> — <a href="https://parallel-launcher.ca/" target="_blank">Download via Official Website</a> (Highly recommended standalone frontend that simplifies updating modern plugins and guarantees high accuracy configuration)</li>
+  <li><strong>Rosalie's Mupen GUI (RMG):</strong> <span style="color:green; font-weight:bold;">YES!</span> — <a href="https://github.com/rosalie241/RMG/releases" target="_blank">Download via GitHub</a> (An excellent standalone frontend for Mupen64Plus that features a clean UI, built-in netplay setups, and highly responsive input configurations)</li>
+  <li><strong>Gopher64:</strong> <span style="color:green; font-weight:bold;">YES!</span> — <a href="https://github.com/gopher64/gopher64" target="_blank">Download via GitHub</a> (An amazing cross-platform emulator featuring heavily optimized code structures adapted from both ares and mupen64plus cores, supporting rewind features and modern upscaling)</li>
+  <li><strong>RetroArch (with Mupen64Plus Next):</strong> <span style="color:green; font-weight:bold;">YES!</span> — <a href="https://www.retroarch.com/" target="_blank">Download via RetroArch Official</a> (Fantastic choice if you utilize the ParaLLEl RSP/RDP core configurations for high-accuracy retro shader scaling and performance stability)</li>
+  <li><strong>Luna's Project 64:</strong> <span style="color:green; font-weight:bold;">YES!</span> (A highly tailored variant of Project64 specifically optimized to process advanced custom geometry configurations and specialized hack structures)</li>
+  <li><strong>M64Plus FZ:</strong> <span style="color:green; font-weight:bold;">YES!</span> (The absolute premier option for mobile/Android emulation, providing robust plugin support capable of managing demanding custom configurations)</li>
+  <li><strong>simple64:</strong> <span style="color:green; font-weight:bold;">YES!</span> (Highly precise, low-level execution environment emphasizing exceptional controller focus and accurate netplay systems)</li>
+  <li><strong>ares:</strong> <span style="color:green; font-weight:bold;">YES!</span> (Superb, highly accurate multi-system emulator built around perfect cycle-accurate emulation protocols)</li>
+  <li><strong>Bizhawk:</strong> <span style="color:green; font-weight:bold;">YES!</span> — <a href="https://tasvideos.org/Bizhawk" target="_blank">Download via TASVideos</a> (The definitive application platform for tool-assisted speedruns, frame-perfect recording, and extensive memory analysis tools)</li>
+  <li><strong>Project 64:</strong> <span style="color:orange; font-weight:bold;">Kinda Yes</span> — <a href="https://www.pj64-emu.com/" target="_blank">Download via Official Website</a> (Modern builds run well, but <strong>legacy versions must be completely avoided</strong> due to broken plugin handling and critical runtime crashes)</li>
+  <li><strong>Mupen64++:</strong> <span style="color:orange; font-weight:bold;">Kinda Yes?</span> — <a href="https://www.emulator-zone.com/doc.php/n64/mupen64plusplus.html" target="_blank">Download via Emulator-Zone</a> (An unofficial and obsolete build, yet it remains popular for its retro netplay functionality and performance on legacy hardware ecosystems)</li>
+  <li><strong>Mupen64:</strong> <span style="color:orange; font-weight:bold;">Kinda No</span> (The old standalone core version is severely outdated compared to current Mupen64Plus forks and will fail to parse modern scripting enhancements)</li>
   <li><strong>UltraHLE:</strong> <span style="color:red; font-weight:bold;">NO (But full respect!)</span> (Released in January 1999, this legendary emulator proved N64 emulation was possible via High-Level Emulation. While historic, it cannot run modern custom ROM hacks.)</li>
-  <li><strong>1964:</strong> <span style="color:red; font-weight:bold;">Highly No</span> (Very old, obsolete plugin architecture, terrible for modern hacks)</li>
-  <li><strong>Corn:</strong> <span style="color:red; font-weight:bold;">NO</span></li>
-  <li><strong>Mupen64:</strong> <span style="color:red; font-weight:bold;">NO</span></li>
-  <li><strong>Nemu64:</strong> <span style="color:red; font-weight:bold;">NO</span> (Completely outdated and highly incompatible with modern hacks)</li>
-  <li><strong>CEN64:</strong> <span style="color:red; font-weight:bold;">NO</span> (Cycle-accurate emulator that runs incredibly slow on average hardware and is largely abandoned)</li>
-  <li><strong>Larper64:</strong> <span style="color:red; font-weight:bold;">NO</span> (Extremely old and discontinued project)</li>
-  <li><strong>Kaizen:</strong> <span style="color:red; font-weight:bold;">NO</span> (Experimental simulator that never reached full compatibility)</li>
+  <li><strong>1964:</strong> <span style="color:red; font-weight:bold;">Highly No</span> (Obsolete plugin architecture and severe instruction mapping bugs make it highly unstable for modern level environments)</li>
+  <li><strong>Corn:</strong> <span style="color:red; font-weight:bold;">NO</span> (Incredibly aggressive microcode hacks allow it to run classic games fast on old computers, but it completely breaks down when processing any real modded assets)</li>
+  <li><strong>Nemu64:</strong> <span style="color:red; font-weight:bold;">NO</span> — <a href="https://archive.org/details/nemu08" target="_blank">Download via Internet Archive</a> (Highly outdated legacy platform completely incompatible with current asset formatting standards)</li>
+  <li><strong>CEN64:</strong> <span style="color:red; font-weight:bold;">NO</span> (A cycle-accurate simulator architecture that is incredibly demanding, largely abandoned, and runs too slowly for general deployment)</li>
+  <li><strong>Larper64:</strong> <span style="color:red; font-weight:bold;">NO</span> (An ancient, discontinued project with insufficient graphic layer processing pipelines)</li>
+  <li><strong>Kaizen:</strong> <span style="color:red; font-weight:bold;">NO</span> (An experimental environment that never matured enough to manage standard core execution requirements)</li>
+  <li><strong>R64Emu:</strong> <span style="color:red; font-weight:bold;">NO</span> (Incomplete or abandoned project architecture that cannot properly load custom asset packages)</li>
+  <li><strong>Rokuyon:</strong> <span style="color:red; font-weight:bold;">NO</span> (An experimental development sandbox not engineered to support or handle consumer ROM hack file logic)</li>
+</ul>
+
+<h3>Recommended Video/Graphics Plugins (N64)</h3>
+<p>
+Choosing the right video plugin is crucial for rendering custom level geometry, textures, and UI elements properly. Use this breakdown for configuration:
+</p>
+
+
+<ul>
+  <li><strong>ParaLLEl-RDP:</strong> <span style="color:green; font-weight:bold;">YES!</span> (The modern gold standard for Vulkan-powered, low-level, pixel-accurate hardware rendering)</li>
+  <li><strong>GLideN64:</strong> <span style="color:green; font-weight:bold;">YES!</span> (The absolute best High-Level Emulation plugin; provides superb compatibility with custom display models, lightning environments, and textures)</li>
+  <li><strong>Angrylion RDP Plus:</strong> <span style="color:green; font-weight:bold;">YES!</span> (An optimized, multi-threaded CPU-driven software renderer that handles framebuffers and deep layering flawlessly)</li>
+  <li><strong>Glide64:</strong> <span style="color:orange; font-weight:bold;">Kinda Yes?</span> (The classic graphic framework; usable on old hardware configs but heavily outclassed by modern forks like GLideN64)</li>
+  <li><strong>Jabo's Direct3D8:</strong> <span style="color:red; font-weight:bold;">NO</span> (Extremely outdated legacy plugin; completely breaks down on modern framebuffers, custom cameras, and lighting coordinates)</li>
+  <li><strong>Rice Video:</strong> <span style="color:red; font-weight:bold;">NO</span> (Prone to severe texture wrapping bugs, missing geometry clipping, and sorting errors in custom level environments)</li>
+  <li><strong>glN64:</strong> <span style="color:red; font-weight:bold;">NO</span> (Ancient OpenGL pipeline missing all essential features required to display modded assets)</li>
+  <li><strong>Angrylion (Official):</strong> <span style="color:red; font-weight:bold;">NO</span> (While pixel-perfect, the single-threaded original build will cause unplayable processing lag on consumer hardware)</li>
+</ul>
+
+<h3>Recommended RSP (Reality Signal Processor) Plugins</h3>
+<p>
+The RSP plugin handles critical game logic, audio streaming, and coordinate geometry transformation. Using an outdated RSP plugin often leads to audio crackling or immediate system crashes.
+</p>
+<ul>
+  <li><strong>Project64 RSP:</strong> <span style="color:green; font-weight:bold;">YES!</span> (Highly robust interpreter module perfectly tailored for Project64 software architecture)</li>
+  <li><strong>ParaLLEl-RSP:</strong> <span style="color:green; font-weight:bold;">YES!</span> (Highly accurate, low-level execution layer designed to function seamlessly with modern Vulkan APIs)</li>
+  <li><strong>Mupen64plus HLE RSP:</strong> <span style="color:green; font-weight:bold;">YES!</span> (Excellently optimized execution parsing framework matching modern Mupen architecture demands)</li>
+  <li><strong>Static Interpreter / CXD4:</strong> <span style="color:green; font-weight:bold;">YES!</span> (An industry benchmark configuration highly recommended for maximum instruction set parsing accuracy)</li>
+  <li><strong>z64:</strong> <span style="color:red; font-weight:bold;">NO</span> (Obsolete tracking protocol that completely drops audio registers and complex rendering computations)</li>
+  <li><strong>Mupen64 HLE RSP:</strong> <span style="color:red; font-weight:bold;">NO</span> (Legacy tracking variant that thoroughly lacks compatibility with current hack framework instructions)</li>
 </ul>
 
 <br>
-<img src="https://www.emulator-zone.com/gallery/emulators/n64/n64.jpg" alt="N64 Gallery Image" style="max-width:100%; height:auto;">
+<h3>Console Gallery</h3>
+<div style="display: flex; gap: 15px; align-items: center; flex-wrap: wrap;">
+  <img src="https://www.emulator-zone.com/gallery/emulators/n64/n64.jpg" alt="N64 Gallery Image 1" style="max-height: 150px; width: auto; object-fit: contain;">
+  <img src="https://www.nicepng.com/png/detail/62-626623_necessarily-mean-nintendo-will-launch-the-console-nintendo.png" alt="N64 Gallery Image 2" style="max-height: 150px; width: auto; object-fit: contain;">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/8/8d/Nintendo_64.png" alt="N64 Gallery Image 3" style="max-height: 150px; width: auto; object-fit: contain;">
+</div>
 <br><br>
 
 <label>ZIP File Name:</label><br>
@@ -83,14 +121,12 @@ This utility is a patch packaging tool only; it does NOT distribute or contain c
 </p>
 
 <script>
-// Automatically update the zip name input field when a patch is selected
 function updateZipName() {
   const fileInput = document.getElementById("patchFile");
   const zipNameInput = document.getElementById("zipName");
   
   if (fileInput.files.length > 0) {
     const fileName = fileInput.files[0].name;
-    // Removes the last extension (e.g., "super_mario.bps" becomes "super_mario")
     const nameWithoutExtension = fileName.substring(0, fileName.lastIndexOf('.'));
     zipNameInput.value = nameWithoutExtension;
   }
@@ -105,7 +141,6 @@ async function makeZip() {
   const message = document.getElementById("message");
   const submitBtn = document.getElementById("submitBtn");
 
-  // Reset messages and color
   message.style.color = "red";
   message.textContent = "";
 
@@ -129,15 +164,12 @@ async function makeZip() {
     return;
   }
 
-  // Provide status update and temporarily disable button during heavy compression
   submitBtn.disabled = true;
   message.style.color = "blue";
   message.textContent = "Optimizing and compressing ZIP file...";
 
-  // Timeout lets the browser render the "Optimizing..." text before freezing to compress
   setTimeout(async () => {
     try {
-      // Fallback to the patch name without extension if the text input is cleared
       const defaultZipName = fileName.substring(0, fileName.lastIndexOf('.'));
       const zipName = zipNameInput.value.trim() || defaultZipName;
       let readmeContent = readmeEditor.value.trim();
@@ -198,14 +230,9 @@ included in this distribution.
       }
 
       const zip = new JSZip();
-
-      // Add patch file
       zip.file(fileName, file);
-
-      // Add README
       zip.file("README.txt", readmeContent);
 
-      // Add images inside screenshots folder
       if (images.length > 0) {
         const imgFolder = zip.folder("screenshots");
         for (let i = 0; i < images.length; i++) {
@@ -213,7 +240,6 @@ included in this distribution.
         }
       }
 
-      // Optimization: Force standard DEFLATE compression to keep sizes small
       const blob = await zip.generateAsync({
         type: "blob",
         compression: "DEFLATE",
@@ -239,68 +265,4 @@ included in this distribution.
 </script>
 
 </body>
-</html>
-1. Visit a secure online patcher, such as Marc Robledo's Rom Patcher JS.
-2. Upload your clean base ROM.
-3. Upload the "${fileName}" patch file.
-4. Click "Apply Patch" to download your modified game file.
-
-METHOD B: Desktop Utility Software
-Launch the specific patching utility required for this format:
-* .bps files   -> Use "Flips" (Floating IPS) or Beat
-* .ips files   -> Use "Lunar IPS" (LIPS) or Flips
-* .xdelta files-> Use "XDeltaUI"
-* .ppf files   -> Use "PPF-O-Matic"
-
-[ TROUBLESHOOTING ]
-----------------------------------------------------------------------
-* Black Screen / Crash: Ensure your base ROM is clean and matches the 
-  exact regional version (USA, Japan, Europe) required for the hack.
-* Checksums: If specified by the author, verify your base ROM's MD5/SHA-1 
-  hash using a checksum verification tool before patching.
-* Emulation: Load the newly generated output file (not the patch file) 
-  into your emulator of choice.
-
-[ LEGAL DISCLAIMER ]
-----------------------------------------------------------------------
-This package contains only modification patch data. No proprietary ROM 
-images, copyrighted game assets, or commercial software data are 
-included in this distribution. 
-
-© 2026 Romhacking Studios. All rights reserved.
-======================================================================`;
-  }
-
-  const zip = new JSZip();
-
-  // Add patch file
-  zip.file(fileName, file);
-
-  // Add README
-  zip.file("README.txt", readmeContent);
-
-  // Add images inside screenshots folder
-  const images = imagesInput.files;
-  if (images.length > 30) {
-    message.textContent = "You can upload a maximum of 30 images.";
-    return;
-  }
-
-  if (images.length > 0) {
-    const imgFolder = zip.folder("screenshots");
-    for (let i = 0; i < images.length; i++) {
-      imgFolder.file(images[i].name, images[i]);
-    }
-  }
-
-  const blob = await zip.generateAsync({type:"blob"});
-  const link = document.createElement("a");
-  link.href = URL.createObjectURL(blob);
-  link.download = zipName + ".zip";
-  link.click();
-}
-</script>
-
-</body>
-</html>
 </html>
